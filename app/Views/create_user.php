@@ -116,28 +116,26 @@
         <div class="container-lg">
           <div class="card mb-4">
             <div class="card-header">
-              <string>List User</string>
+              <string>Create User</string>
             </div>
-            <div>
-              <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>Nama</td>
-                      <td>:</td>
-                      <td><?= $nama ?></td>
-                    </tr>
-                    <tr>
-                      <td>Kelas</td>
-                      <td>:</td>
-                      <td><?= $kelas ?></td>
-                    </tr>
-                    <tr>
-                      <td>NPM</td>
-                      <td>:</td>
-                      <td><?= $npm ?></td>
-                    </tr>
-                  </tbody>
-                </table>
+            <div class="card-body">
+              <form action="<?= base_url('/store') ?>" method="POST">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Nama</label>
+                  <input type="text" class="form-control"  aria-describedby="name">
+                  <div id="name" class="form-text">Tuliskan Nama Lengkap Anda !!!</div>
+                </div>
+                <div class="mb-3">
+                  <label for="kelas" class="form-label">Kelas</label>
+                  <input type="text" class="form-control" id="kelas">
+                </div>
+                <div class="mb-3">
+                  <label for="npm" class="form-label">NPM</label>
+                  <input type="" class="form-control" id="npm">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+              </form>
             </div>
             
       </div>

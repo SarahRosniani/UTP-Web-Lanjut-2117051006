@@ -16,6 +16,12 @@ class Home extends BaseController
 
     public function profile(): string
     {
-        return view('profile');
+        $data = [
+            'nama' => $nama,
+            'npm' => $npm,
+            'kelas' => $kelas
+        ];
+
+        return view('profile', $data);
     }
 }
