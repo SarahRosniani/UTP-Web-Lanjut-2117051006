@@ -122,16 +122,29 @@
               <form action="<?= base_url('/store') ?>" method="POST">
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Nama</label>
-                  <input type="text" class="form-control"  aria-describedby="name">
+                  <input type="text" class="form-control"  aria-describedby="name" name="nama">
                   <div id="name" class="form-text">Tuliskan Nama Lengkap Anda !!!</div>
                 </div>
                 <div class="mb-3">
                   <label for="kelas" class="form-label">Kelas</label>
-                  <input type="text" class="form-control" id="kelas">
+                  <select type="text" class="form-control" id="kelas" name="kelas">
+                    <?php
+                    foreach ($kelas as $item){
+                      ?>
+                      <option value="<?= $item['id'] ?>">
+                            <?= $item['nama_kelas'] ?>
+                      </option>
+                      <?php
+                    }
+                    ?>
+                    </select>
                 </div>
                 <div class="mb-3">
                   <label for="npm" class="form-label">NPM</label>
-                  <input type="" class="form-control" id="npm">
+                  <input type="" name="npm" class="form-control <?= ($validation->hasError('npm')) ? 'is-invalid' : '' ; ?>" id="npm">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('npm'); ?>
+                                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>

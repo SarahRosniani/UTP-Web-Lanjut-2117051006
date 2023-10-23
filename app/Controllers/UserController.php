@@ -15,7 +15,35 @@ class UserController extends BaseController
 
     public function create(): string
     {
-        return view('create_user');
+        $kelas  = [
+            [
+                'id'        => 1,
+                'nama_kelas'    => 'A',
+            ],
+            [
+                'id'        => 2,
+                'nama_kelas'    => 'B',
+            ],
+            [
+                'id'        => 3,
+                'nama_kelas'    => 'C',
+            ],
+            [
+                'id'        => 4,
+                'nama_kelas'    => 'D',
+            ],
+
+        ];
+
+        session();
+        $data = [
+            'kelas' => $kelas,
+            'nama' => $nama,
+            'npm' => $npm,
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('create_user', $data);
     }
 
     public function profile($nama = '', $kelas = '', $npm = ''): string
@@ -31,6 +59,13 @@ class UserController extends BaseController
 
     public function store(): string
     {
+        $userModel = new UserModel();
+
+        $userModel->saveUser([
+            'nama'  => $this->request->getVar('nama'),
+            'id_kelas'  => $this->request->getVar('kelas'),
+            'npm'       => $this->request->getVar('npm'),
+        ]);
 
         $data = [
             'nama'      => $this->request->getVar('nama'),
