@@ -29,8 +29,10 @@
                 <td><?= $user['nama'] ?></td>
                 <td><?= $user['npm'] ?></td>
                 <td><?= $user['nama_kelas'] ?></td>
-                <td><button type="button" class="btn btn-info">Edit</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <td>
+                    <a href="<?= base_url('user/' . $user['id']) ?>">Detail</a>
+                    <button type="button" class="btn btn-info">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
                 </td>
             </tr>
         <?php
