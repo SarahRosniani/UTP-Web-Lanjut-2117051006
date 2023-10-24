@@ -9,6 +9,7 @@ use App\Models\UserModel;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'Home::login');
-$routes->get('/profile', [UserController::class, 'profile']);
-$routes->get('/create', [UserController::class, 'create']);
-$routes->post('/store', [UserController::class, 'store']);
+$routes->get('/user/profile', [UserController::class, 'profile']);
+$routes->get('/user/create', [UserController::class, 'create']);
+$routes->post('/user/store', [UserController::class, 'store']);
+$routes->get('/user', [UserController::class, 'index']);
