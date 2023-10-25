@@ -30,8 +30,8 @@
                 <td><?= $user['npm'] ?></td>
                 <td><?= $user['nama_kelas'] ?></td>
                 <td>
-                    <a href="<?= base_url('user/' . $user['id']) ?>">Detail</a>
-                    <a href="<?= base_url('/user/'. $user['id'] . '/edit') ?>">Edit</a>
+                    <a href="<?= base_url('user/' . $user['id']) ?>" type="button" class="btn btn-primary">Detail</a>
+                    <a href="<?= base_url('/user/'. $user['id'] . '/edit') ?>" type="button" class="btn btn-info">Edit</a>
                     <form action="<?= base_url('user/' . $user['id']) ?>" method="post">
                         <input type="hidden" name="_method" value="DELETE">
                         <?= csrf_field() ?>
