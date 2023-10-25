@@ -3,6 +3,7 @@
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\Home;
 use App\Controllers\UserController;
+use App\Controllers\KelasController;
 use App\Models\UserModel;
 /**
  * @var RouteCollection $routes
@@ -14,3 +15,9 @@ $routes->get('/user/create', [UserController::class, 'create']);
 $routes->post('/user/store', [UserController::class, 'store']);
 $routes->get('/user', [UserController::class, 'index']);
 $routes->get('user/(:any)', [UserController::class, 'show']);
+$routes->get('user/(:any)/edit', [UserController::class, 'edit']);
+$routes->get('user/(:any)', [UserController::class, 'update']);
+$routes->delete('/user/(:any)', [UserController::class, 'destroy']);
+
+$routes->get('/kls', [KelasController::class, 'index']);
+$routes->get('kls/(:any)', [KelasController::class, 'show']);

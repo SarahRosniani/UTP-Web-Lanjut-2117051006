@@ -14,8 +14,6 @@
         <thead>
             <tr class="table-danger">
                 <th>ID</th>
-                <th>Nama</th>
-                <th>NPM</th>
                 <th>Kelas</th>
                 <th>Aksi</th>
             </tr>
@@ -26,13 +24,11 @@
             ?>
             <tr class="table-success">
                 <td><?= $user['id'] ?></td>
-                <td><?= $user['nama'] ?></td>
-                <td><?= $user['npm'] ?></td>
                 <td><?= $user['nama_kelas'] ?></td>
                 <td>
-                    <a href="<?= base_url('user/' . $user['id']) ?>">Detail</a>
-                    <a href="<?= base_url('/user/'. $user['id'] . '/edit') ?>">Edit</a>
-                    <form action="<?= base_url('user/' . $user['id']) ?>" method="post">
+                    <a href="<?= base_url('kls/' . $user['id']) ?>">Detail</a>
+                    <a href="<?= base_url('/kls/'. $user['id'] . '/edit') ?>">Edit</a>
+                    <form action="<?= base_url('kls/' . $user['id']) ?>" method="post">
                         <input type="hidden" name="_method" value="DELETE">
                         <?= csrf_field() ?>
                         <button type="submit" class="btn btn-danger">Delete</button>
