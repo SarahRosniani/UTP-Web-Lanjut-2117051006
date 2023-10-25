@@ -23,23 +23,19 @@
 
                                     <div class="card-body">
                                     <form action="<?= base_url('/user/' . $user['id']) ?>" method="POST" enctype="multipart/form-data" >
-                                            <input type="hidden" name="_method" value="PUT">
-                                            <?= csrf_field() ?>
+                                    <?= csrf_field() ?>
+                                    <input type="hidden" name="_method" value="PUT">
+                                    <img src="<?= $user['foto'] ?? 'default-foto>' ?>" class="rounded" width="250px">
+                                    <input type="file" name="foto" id="foto">
+                                            
                                             <div class="form-floating mb-3">
-                                            <label for="nama">Nama</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="nama" class="form-control" value="<?= $user['nama'] ?>" id="nama">
-                                                </div>
+                                                <input class="form-control" name="nama"  id="nama" type="text" placeholder="nama" value="<?= $user['nama'] ?>" />
+                                                <label for="nama" >Nama</label>
+                                                
                                             </div>
                                             <div class="form-floating mb-3">
+                                                <input class="form-control" name="npm" id="npm" type="number" placeholder="npm" value="<?= $user['npm'] ?>" />
                                                 <label for="npm">NPM</label>
-                                                <div class="col-sm-10">
-                                                    
-                                                    <input type="" name="npm" class="form-control <?= ($validation->hasError('npm')) ? 'is-invalid' : '' ; ?>" id="npm" value="<?= $user['nama'] ?>">
-                                                    <div class="invalid-feedback">
-                                                        <?= $validation->getError('npm'); ?>
-                                                    </div>
-                                                </div>
                                             </div>
                                             <div class="form-floating mb-3">
                                             
@@ -48,19 +44,17 @@
                                                 <?php
                                                 foreach ($kelas as $item){
                                                     ?>
-                                                    <option value="<?= $item['id'] ?>" <?= $user['id_kelas'] == $item['id'] ? 'selected' : ''?> >
-                                                     <?= $item['nama_kelas'] ?>
-                                                   
-                                                    </option>
+                                                    <option value="<?= $item['id'] ?>" <?= $user['id_kelas'] == $item['id'] ? 'selected' : '' ?> >
+                                                    <?= $item['nama_kelas'] ?>
+                                                </option>
                                                 <?php
                                                 }
                                                 ?>
                                             </select>
-                                            </div>
-                                                <img src="<?= $user['foto'] ?? '<default-foto>' ?>">
-                                                <label class="input-group mb-3" for="foto">Upload Foto</label>
-                                                <input type="file" class="form-control" name='foto' id="foto">
-                                            </div>
+                                            <!-- </div>
+                                            <label class="input-group mb-3" for="foto">Upload Foto</label>
+                                            <input type="file" class="form-control" name='foto' id="foto">
+                                            </div> -->
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <button class="btn btn-primary" name="submit" >Submit</button>
                                             </div>

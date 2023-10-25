@@ -25,6 +25,36 @@ class KelasController extends BaseController
         return view ('list_kelas', $data);
     }
 
+    public function kelas($kelas = ''){
+        // session();
+         $data = [
+             'kelas' => $kelas,
+         ];
+         return view('kelas', $data);
+     }
+
+    public function create(){
+    
+        $data = [
+            'title' => 'Create Kelas',
+            
+        ];
+        return view('create_kelas', $data);
+    }
+
+    public function store(){
+        
+       $this->kelasModel->saveKelas([
+        'nama_kelas' => $this->request->getVar('kelas'),
+       ]);
+   
+    $data = [
+        'kelas' => $this->request->getVar('kelas'),
+    ];
+        return redirect()->to('/kls');
+
+    }
+
     public function show($id){
         $user = $this->kelasModel->getKelas($id);
 
@@ -34,5 +64,41 @@ class KelasController extends BaseController
         ];
 
         return view('kelas', $data);
+    }
+
+    public function edit($id){
+        $kelas = $this->kelasModel->getKelas($id);
+
+        $data = [
+            'title' => 'Edit Kelas',
+            'kelas' => $kelas,
+        ];
+        return view('edit_kelas', $data);
+    }
+
+    public function update($id){
+        
+        $data = [
+            'nama_kelas' => $this->request->getVar('kelas'),
+            
+        ];
+
+        $result = $this->kelasModel->updateKelas($data, $id);
+
+        if(!$result){
+            return redirect()->back()->withInput()
+            ->with('error', 'Gagal Menyimpan Data');
+        }
+        return redirect()->to('/kls');
+    }
+
+    public function destroy($id){
+        $result = $this->kelasModel->deleteKelas($id);
+        
+        if(!$result){
+            return redirect()->with('error', 'Gagal menghapus data');
+        }
+        return redirect()->to(base_url('/kls'))
+        ->with('succes', 'Berhasil menghapus data');
     }
 }
