@@ -2,28 +2,13 @@
 
 <?= $this->section('content') ?>
 <div>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="<?= base_url(relativePath: 'user/')?>">User</a>
-        <a class="nav-link" href="<?= base_url(relativePath: 'kls/')?>">Kelas</a>
-      </div>
-    </div>
-  </div>
-</nav>
 <body>
 <div class="main">
     <div class="login-ladmin screen">
         <div class="overlap-group4">
+    
         <div class="rectangle-2"></div>
-     
-        <div class="sipbi valign-text-bottom">Tambah Data User</div>
+        <div class="sipbi valign-text-bottom">Edit Data User</div>
     </div>
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -37,17 +22,21 @@
                                     
 
                                     <div class="card-body">
-                                    <form action="<?= base_url('/user/store') ?>" method="POST" enctype="multipart/form-data" >
-                                            
+                                    <form action="<?= base_url('/user/' . $user['id']) ?>" method="POST" enctype="multipart/form-data" >
+                                    <?= csrf_field() ?>
+                                    <input type="hidden" name="_method" value="PUT">
+                                    <img src="<?= $user['foto'] ?? 'default-foto>' ?>" class="rounded" width="200px">
+                                    <div>
+                                        <input type="file" name="foto" id="foto">
+                                    </div>
+                                       
                                             <div class="form-floating mb-3">
-                                                <input class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid': ''; ?>" name="nama"  id="nama" type="text" placeholder="nama" />
-                                                <label for="nama">Nama</label>
-                                                <div class="invalid-feedback">
-                                                    <?= $validation->getError('nama'); ?>
-                                                </div>
+                                                <input class="form-control" name="nama"  id="nama" type="text" placeholder="nama" value="<?= $user['nama'] ?>" />
+                                                <label for="nama" >Nama</label>
+                                                
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="npm" id="npm" type="number" placeholder="npm" />
+                                                <input class="form-control" name="npm" id="npm" type="number" placeholder="npm" value="<?= $user['npm'] ?>" />
                                                 <label for="npm">NPM</label>
                                             </div>
                                             <div class="form-floating mb-3">
@@ -57,25 +46,21 @@
                                                 <?php
                                                 foreach ($kelas as $item){
                                                     ?>
-                                                    <option value="<?= $item['id'] ?>">
+                                                    <option value="<?= $item['id'] ?>" <?= $user['id_kelas'] == $item['id'] ? 'selected' : '' ?> >
                                                     <?= $item['nama_kelas'] ?>
                                                 </option>
                                                 <?php
                                                 }
                                                 ?>
                                             </select>
-                                            </div>
+                                            <!-- </div>
                                             <label class="input-group mb-3" for="foto">Upload Foto</label>
                                             <input type="file" class="form-control" name='foto' id="foto">
-                                            </div>
-                                            <ul>
+                                            </div> -->
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <div class="btn-group">
-                                                    <button class="btn btn-primary" name="submit" >Submit</button>
-                                                    <a href="<?= base_url(relativePath: 'user/')?>" class="btn btn-info">Kembali</a>
-                                                </div>
+                                                <button class="btn btn-primary" name="submit" >Submit</button>
+                                                <a href="<?= base_url(relativePath: 'user/')?>" class="btn btn-info">Kembali</a>
                                             </div>
-                                            </ul>
                                         </form>
                                     </div>
                                 </div>
