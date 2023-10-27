@@ -3,11 +3,11 @@
 <?= $this->section('content') ?>
 <body>
 <div class="main">
-<center><img src="<?= $user['foto'] ?? '<default-foto>' ?>" class="rounded" width="250px"></center>
-<div class="container">
-        <div class="card" data-tilt> 
-
-            <h2>Profile</h2>
+        <div class="card" style="width: 24rem;">
+        <center><img src="<?= $user['foto'] ?? '<default-foto>' ?>" class="card-img-top" alt="Card image cap"></center>
+  <div class="card-body">
+    <div>
+    <h2>Profile</h2>
             <br>
             <tr>
                 <td><div class="..."><?= $user['nama'] ?></div></td>
@@ -20,6 +20,9 @@
             <tr>
             <td><div class="..."><?= $user['npm'] ?></div></td>
             </tr>
-</div>
+    </div>
+    <a href="<?= base_url(relativePath: 'user/')?>" class="btn btn-info">Kembali</a>
+  </div>
+
 </body>
 <?= $this->endSection() ?>

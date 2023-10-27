@@ -93,51 +93,52 @@ class UserController extends BaseController{
         $kelas = $this->kelasModel->getKelas();
 
         $data = [
-            'title'     => 'Edit User',
-            'user'      => $user,
-            'kelas'     => $kelas,
+            'title' => 'Edit User',
+            'user' => $user,
+            'kelas' => $kelas,
         ];
-
         return view('edit_user', $data);
     }
 
     public function update($id){
-        $path = 'assets/uploads/img' ;
+        $path = 'assets/uploads/img/';
+
         $foto = $this->request->getFile('foto');
 
+
         $data = [
-            'nama'      => $this->request->getVar('nama'),
-            'id_kelas'  => $this->request->getVar('kelas'),
-            'npm'       => $this->request->getVar('npm'),
+            'nama' => $this->request->getVar('nama'),
+            'npm' => $this->request->getVar('npm'),
+            'id_kelas' => $this->request->getVar('kelas'),
         ];
 
         if($foto->isValid()){
             $name = $foto->getRandomName();
 
-            if ($foto->move($path, $name)) {
+            if($foto->move($path, $name)){
                 $foto_path = base_url($path . $name);
-                
+
                 $data['foto'] = $foto_path;
             }
         }
+        
 
         $result = $this->userModel->updateUser($data, $id);
 
-        if(!result){
+        if(!$result){
             return redirect()->back()->withInput()
-                ->with('error', 'Gagal menyimpan data');
+            ->with('error', 'Gagal Menyimpan Data');
         }
-
-        return redirect()->to(base_url('/user'));
+        return redirect()->to('/user');
     }
 
     public function destroy($id){
         $result = $this->userModel->deleteUser($id);
-        
-        if(!$result){
-            return redirect()->with('error', 'Gagal menghapus data');
+        if (!$result) {
+            return redirect()->back()->with('error', 'Gagal Menghapus Data');
         }
         return redirect()->to(base_url('/user'))
-        ->with('succes', 'Berhasil menghapus data');
+        ->with('success', 'Berhasil Menghapus Data');
     }
+
 }
