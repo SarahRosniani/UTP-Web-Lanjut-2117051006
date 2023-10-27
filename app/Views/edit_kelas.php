@@ -8,7 +8,7 @@
         <div class="overlap-group4">
         <div class="rectangle-2"></div>
      
-        <div class="sipbi valign-text-bottom">Praktikum Web Lanjut</div>
+        <div class="sipbi valign-text-bottom">Edit Data Kelas</div>
     </div>
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -33,6 +33,7 @@
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <button class="btn btn-primary" name="submit" >Submit</button>
+                                                <a href="<?= base_url(relativePath: 'kls/')?>" class="btn btn-info">Kembali</a>
                                             </div>
                                         </form>
                                     </div>

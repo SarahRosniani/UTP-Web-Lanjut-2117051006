@@ -6,9 +6,9 @@
 <div class="main">
     <div class="login-ladmin screen">
         <div class="overlap-group4">
+    
         <div class="rectangle-2"></div>
-     
-        <div class="sipbi valign-text-bottom">Praktikum Web Lanjut</div>
+        <div class="sipbi valign-text-bottom">Edit Data User</div>
     </div>
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -25,9 +25,11 @@
                                     <form action="<?= base_url('/user/' . $user['id']) ?>" method="POST" enctype="multipart/form-data" >
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="_method" value="PUT">
-                                    <img src="<?= $user['foto'] ?? 'default-foto>' ?>" class="rounded" width="250px">
-                                    <input type="file" name="foto" id="foto">
-                                            
+                                    <img src="<?= $user['foto'] ?? 'default-foto>' ?>" class="rounded" width="200px">
+                                    <div>
+                                        <input type="file" name="foto" id="foto">
+                                    </div>
+                                       
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" name="nama"  id="nama" type="text" placeholder="nama" value="<?= $user['nama'] ?>" />
                                                 <label for="nama" >Nama</label>
@@ -57,6 +59,7 @@
                                             </div> -->
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <button class="btn btn-primary" name="submit" >Submit</button>
+                                                <a href="<?= base_url(relativePath: 'user/')?>" class="btn btn-info">Kembali</a>
                                             </div>
                                         </form>
                                     </div>
